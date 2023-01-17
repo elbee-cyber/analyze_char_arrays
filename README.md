@@ -1,7 +1,7 @@
 # Binary Ninja Char Arrays 
 Author: **elbee**
 
-Analyzes void variables and loads them as defined character arrays.
+Simple plugin that analyzes void variables and loads them as defined character arrays.
 
 ## Description:
 Binary Ninja does not assume types to be character arrays and initializes them void. This plugin analyzes the selected function for character arrays and re-declares them as such, eg. (char buf\[size]). Allows buffers to be shown as is and not as void types for preference purposes.
