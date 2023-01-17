@@ -14,4 +14,4 @@ To operate the plugin simply right click in your pane and select an option. The 
 
 ## License
 
-This plugin is released under an [MIT license](./license).
+This plugin is released under an [MIT license](./LICENSE).
