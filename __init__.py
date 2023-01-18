@@ -29,6 +29,7 @@ def withBoth(bv,function):
 
 def change_types(bv,variables,function,opt):
 	modified_var_names = ""
+	tt = bv.create_tag_type("Char Arrays Plugin","ℹ️")
 	for var in variables:
 		size = abs(var.storage-function.stack_layout[function.stack_layout.index(var)+1].storage)
 		new_type = Type.array(Type.char(), size)
@@ -37,10 +38,7 @@ def change_types(bv,variables,function,opt):
 		addr = function.high_level_il.get_var_uses(var)[0].address
 		if opt == 1 or opt == 3:
 			bv.set_comment_at(addr, "Assumed char[] | "+str(size)+" bytes | Pos "+str(function.stack_layout.index(var)))
-			#log_info("Wrote comment @ "+str(hex(addr)))
 		if opt == 2 or opt == 3:
-			#log_info("Wrote tag @ "+str(hex(addr)))
-			tt = bv.create_tag_type("Char Arrays Plugin","ℹ️")
 			bv.create_auto_data_tag(addr, tt, "Assumed char[] | "+str(size)+" bytes | Pos "+str(function.stack_layout.index(var))+" | Declared before "+function.stack_layout[function.stack_layout.index(var)+1].name)
 	function.reanalyze()
 	if len(modified_var_names) < 1:
